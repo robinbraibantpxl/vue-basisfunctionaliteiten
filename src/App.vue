@@ -25,6 +25,9 @@ export default {
         afb(tekst, event) {
             event = document.getElementsByTagName("img")[0].src = "assets/poker-winkel.png";
             tekst = document.getElementsByTagName("button")[0]. innerHTML = "afbeelding gewijzigd";
+        },
+        sub(event) {
+            event = document.getElementById("tekst").valueOf()
         }
     }
 }
@@ -48,6 +51,12 @@ export default {
   <img @click="add()" src="assets/Schermafbeelding%202023-06-10%20161041.png" alt="afbeelding">
     <br>
   <button id="but" @click="verwijder()">Verberg mij</button>
+  <br>
+  <form>
+      <input id="tekst" type="text" value="type hier" name="iets">
+      <br>
+      <input type="submit" value="submit" name="sub" @click="sub">
+  </form>
 </template>
 
 <style>
