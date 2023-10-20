@@ -8,7 +8,10 @@ export default {
       fullName: "Robin Braibant",
       age: 39,
       url: 'https://vuejs.org',
-      visibility: 'display: none'
+      visibility: 'display: none',
+
+      //nieuwe variabele
+      message: ''
     }
   },
   methods: {
@@ -29,11 +32,17 @@ export default {
     hideButton() {
       this.visibility = "display: none"
     },
-
-    //Toepassing van de gewijzigde code
     changeImage(event, path) {
       event.target.textContent = 'Afbeelding gewijzigd'
       this.baseImage = path;
+    },
+
+    //Methode om de alert te tonen
+    partOne(){
+      alert("De submit werkt toch al")
+    },
+    showMessage(event) {
+      this.message = event.target.value;
     }
   }
 }
@@ -48,8 +57,6 @@ export default {
       <img class="main-image" v-bind:src="baseImage" v-on:click="showButton()">
     </picture>
     <button v-bind:style="visibility" v-on:click="hideButton()">Verberg mij</button>
-
-    <!-- Het standaard event inladen op de methode -->
     <button v-on:click="changeImage($event, 'src/assets/barcelona.jpg')">Wijzig afbeelding</button>
 
     <p>{{ changeText() }}</p>
@@ -60,6 +67,25 @@ export default {
     <p>{{ showRandomNumber() }}</p>
     <a v-bind:href="url">Vue Website</a>
     <input type="text" v-bind:value="fullName">
+
+    <!-- Formulier met event listener en een event modifier -->
+    <form class="form" v-on:submit.prevent="partOne()">
+      <div class="form-field">
+        <label for="message">Boodschap</label>
+
+        <!-- DEEL 2 event listener op de input om de Boodschap te tonen in de paragraaf eronder -->
+        <!-- <input type="text" name="message" id="message" v-on:input="showMessage($event)"> -->
+
+        <!-- DEEL 3 event listener om de Boodschap enkel te tonen wanneer er op de ENTER toets wordt geklikt -->
+        <input type="text" name="message" id="message" v-on:keydown.enter="showMessage($event)">
+
+        <p>{{ message }}</p>
+
+      </div>
+      <div class="form-submit">
+        <button>Verzend</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -76,5 +102,22 @@ picture {
 }
 .main-image {
   width: 50%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 0;
+  padding: 2rem;
+  border: solid 1px #000000
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.form-submit {
+  width: 50%;
+  margin: 1rem 0;
 }
 </style>
