@@ -4,8 +4,18 @@ export default {
     return { 
       titel: "Vue basisfunctionaliteiten",
       intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      // De variabele voor de afbeelding. Opgelet de @ alias werkt hier niet omdat vue de waarde als een volwaardige string gaat benaderen
       baseImage: './src/assets/car.jpg'
+    }
+  },
+  // Om methodes aan te maken gebruiken we de methods eigenschap en hierbinnen maken we een nieuwe methode aan met de gevraagde functionaliteit
+  methods: {
+    changeText() {
+      let randomNumber = Math.random();
+      if (randomNumber < 0.5) {
+        return "Wij verkopen de beste producten die je op de markt kan vinden"
+      } else {
+        return 'Wie zoekt die vindt'
+      }
     }
   }
 }
@@ -16,14 +26,14 @@ export default {
     <h1>{{ titel }}</h1>
     <p>{{ intro }}</p>
     <picture>
-      <!-- Met v-bind kan je de variabele binden aan het src attribuut -->
       <img class="main-image" v-bind:src="baseImage">
     </picture>
+    <!-- Link de methode aan een paragraaf -->
+    <p>{{ changeText() }}</p>
   </div>
 </template>
 
 <style>
-/* Basis css toegevoegd om het er allemaal wat beter te laten uitzien */
 .container {
   width: 75%;
   margin: auto;
