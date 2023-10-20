@@ -7,7 +7,10 @@ export default {
       baseImage: './src/assets/car.jpg',
       fullName: "Robin Braibant",
       age: 39,
-      url: 'https://vuejs.org'
+      url: 'https://vuejs.org',
+
+      //Variabele die de display eigenschap gaat bijhouden
+      visibility: 'display: none'
     }
   },
   methods: {
@@ -21,6 +24,16 @@ export default {
     },
     showRandomNumber() {
       return Math.random();
+    },
+
+    //Methode om de button weer te geven
+    showButton() {
+      this.visibility = ""
+    },
+
+    //Methode om de button weer te geven
+    hideButton() {
+      this.visibility = "display: none"
     }
   }
 }
@@ -30,11 +43,16 @@ export default {
   <div class="container">
     <h1>{{ titel }}</h1>
     <p>{{ intro }}</p>
+
+    
     <picture>
-      <img class="main-image" v-bind:src="baseImage">
+      <img class="main-image" v-bind:src="baseImage" v-on:click="showButton()">
     </picture>
+    <!-- We binden het style attribuut aan een variabele waarbij we de display eigenschap op none zetten. -->
+    <button v-bind:style="visibility" v-on:click="hideButton()">Verberg mij</button>
+
+
     <p>{{ changeText() }}</p>
-    <!-- Events opdracht 1 -->
     <h2 v-on:click="age++">{{ fullName }}</h2>
     <p>{{ age }}</p>
     <p>{{ age + 5 }}</p>
