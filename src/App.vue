@@ -30,8 +30,9 @@ export default {
       this.visibility = "display: none"
     },
 
-    //Methode om afbeelding te wijzigen
-    changeImage(path) {
+    //Toepassing van de gewijzigde code
+    changeImage(event, path) {
+      event.target.textContent = 'Afbeelding gewijzigd'
       this.baseImage = path;
     }
   }
@@ -48,8 +49,8 @@ export default {
     </picture>
     <button v-bind:style="visibility" v-on:click="hideButton()">Verberg mij</button>
 
-    <!-- De button met het pad naar de afbeelding, ook weer zonder @ omdat de string letterlijk wordt doorgegeven -->
-    <button v-on:click="changeImage('src/assets/barcelona.jpg')">Wijzig afbeelding</button>
+    <!-- Het standaard event inladen op de methode -->
+    <button v-on:click="changeImage($event, 'src/assets/barcelona.jpg')">Wijzig afbeelding</button>
 
     <p>{{ changeText() }}</p>
 
