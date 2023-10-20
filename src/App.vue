@@ -5,7 +5,6 @@ export default {
       titel: "Vue basisfunctionaliteiten",
       intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       baseImage: './src/assets/car.jpg',
-      // Variabelen opdracht 6
       fullName: "Robin Braibant",
       age: 39,
       url: 'https://vuejs.org'
@@ -20,7 +19,6 @@ export default {
         return 'Wie zoekt die vindt'
       }
     },
-    // Methode opdracht 6
     showRandomNumber() {
       return Math.random();
     }
@@ -36,9 +34,8 @@ export default {
       <img class="main-image" v-bind:src="baseImage">
     </picture>
     <p>{{ changeText() }}</p>
-
-    <!-- Opdracht 6 -->
-    <h2>{{ fullName }}</h2>
+    <!-- Events opdracht 1 -->
+    <h2 v-on:click="age++">{{ fullName }}</h2>
     <p>{{ age }}</p>
     <p>{{ age + 5 }}</p>
     <p>{{ showRandomNumber() }}</p>
